@@ -1,0 +1,24 @@
+{
+  "name": "mdp-api",
+  "version": "1.0.0",
+  "description": "Monitoring data platform rest api",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "mongoose": "^4.5.10",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://gispuppetuat01.us.dell.com:9090/setia.tarik/MDP-Fh-API.git"
+  },
+  "author": "Tarik Setia",
+  "license": "ISC"
+}
