@@ -8,10 +8,14 @@ var portal = require('./routes/portal');
 var app = express();
 var mongoose =require('mongoose');
 var morgan = require('morgan');
+var fs = require('fs');
 
-mongoose.connect('mongodb://localhost/monitoring');
+mongoose.connect('mongodb://dsadb/monitoring');
 
-app.use(morgan('combined'));
+//app.use(morgan('combined'),{ stream: fs.createWriteStream('./api.log',{flags:'a'})});
+//app.use(morgan('combined'));
+app.use(morgan('common', {stream: fs.createWriteStream('./access.log', {flags: 'a'})}))
+app.use(morgan('dev'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
