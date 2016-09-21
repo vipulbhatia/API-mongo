@@ -10,7 +10,7 @@ var mongoose =require('mongoose');
 var morgan = require('morgan');
 var fs = require('fs');
 
-mongoose.connect('mongodb://dsadb/monitoring');
+mongoose.connect('mongodb://dsusdsadb:27017/monitoring');
 
 //app.use(morgan('combined'),{ stream: fs.createWriteStream('./api.log',{flags:'a'})});
 //app.use(morgan('combined'));
@@ -40,6 +40,6 @@ app.use((err, req, res, next)=> {
   }
 });
 
-app.listen(3000, function () {
+app.listen(8081, function () {
   console.log('Example app listening on port 3000!');
 });
