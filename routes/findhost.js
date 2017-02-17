@@ -12,12 +12,30 @@ router.get('/', (req,res,next)=>
     })
 );
 
-router.get('/:hostname', function(req,res,next){
-    var host = req.params.hostname;
-    Findhost.find({esm_name:host},function(err,doc){
+router.get('/:hostname/:limit?/:_id?', function(req,res,next){
+    var host = new RegExp(req.params.hostname, 'i');
+    var query = {};
+    var limit = 10;
+    console.log(req.params);
+    if(req.params.limit != undefined && req.params.limit < 20) limit = parseInt(req.params.limit);
+    if(req.params._id) {
+        query = {
+            esm_name: host,
+            _id: {
+                $gt: req.params._id
+            }
+        };
+    } else {
+        query = {
+            esm_name: host
+        };
+    }
+    Findhost.find(query)
+        .limit(limit)
+        .exec(function(err,doc){
         if (err) next(err);
-        else{
-            res.status(200).json(doc);
+        else {
+            res.status(200).json({results: doc});
         }
     });
 });
